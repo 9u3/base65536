@@ -110,6 +110,7 @@ B2 = {
 def encode(value):
     """Encodes bytes to a base65536 string."""
     stream = io.StringIO()
+    value = value.decode('utf-8') # This should make it so you don't need to have b"" 
     length = len(value)
     for x in range(0, length, 2):
         b1 = indexbytes(value, x)
@@ -122,6 +123,7 @@ def encode(value):
 def decode(value):
     """Decodes bytes from a base65536 string."""
     stream = io.BytesIO()
+    value = value.decode('utf-8') # This should make it so you don't need to have b"" 
     done = False
     for ch in value:
         code_point = ord(ch)
